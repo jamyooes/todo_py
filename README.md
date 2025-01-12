@@ -1,2 +1,2 @@
 # todo_py
-Simple python todo list
+A simple Python application to add, update, and delete tasks.

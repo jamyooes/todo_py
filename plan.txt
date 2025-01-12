@@ -1,0 +1,31 @@
+Phase 1
+Implement adding tasks
+Implement deleting tasks
+Implement updating tasks 
+
+Phase 2
+Due Dates, Categories
+Priorities
+
+Phase 3
+Presisting the data - csv or DB?
+
+Phase 4
+UI component
+Colors, calendar?
+
+Phase 5
+Alerts with emails/Phone notification
+
+-------------------------------------------------------
+Task list that contains various tasks
+Task list can filter based on Categories, and Priorities
+Task list can sort by due dates, categories, and Priorities
+
+What is a task?
+Task has a name, category, priorities, dates, description, and Thoughts, completed date, start date
+
+Archive
+History table
+
+Option to remove multiple tasks
