@@ -1,5 +1,14 @@
+Day 2: 1/13/25
+What did I do?
+Poked around tkinter
+
+Thoughts
+I found a better approach to my problem. I can just use frames as a class and 
+move the frames with the highest frame, being displayed
+----------------------------------------------------------------------------------
 Day 1: 1/12/25
 What did I do?
 Created a basic plan
 
 Thoughts?
+Meh

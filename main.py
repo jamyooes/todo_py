@@ -32,6 +32,10 @@ class Task():
     def remove_description(self):
         self.description = ""
     
+    def update_description(self):
+        # connect it to GUI button
+        pass
+    
     def description(self):
         pass
     
