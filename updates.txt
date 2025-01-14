@@ -1,3 +1,12 @@
+Day 3: 1/14/25
+What did I do?
+I played around with frames in tkinter
+Things are starting to make sense in this library
+I am excited for tomorrow
+
+Thoughts
+Fun
+----------------------------------------------------------------------------------
 Day 2: 1/13/25
 What did I do?
 Poked around tkinter

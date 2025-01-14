@@ -19,15 +19,8 @@ class Task_List():
     def update_tasks(self):
         pass
 
-def erase_widgets(root):
-    # Utility function to clearing out the screen
-    for widget in root.winfo_children():
-        widget.destroy()
-
 # TO-DO maybe add some kind of db connection or local storage with csv
-def task_list_screen(root):
-    erase_widgets(root)
-    
+def task_list_screen(root): 
     # Maybe load a csv here
     
     # Instantiate an instance of Tasklist
@@ -45,7 +38,6 @@ def create_new (root):
     pass
         
 def create_new_task_win(root, todo_list):
-    erase_widgets(root)
     task_list_btn = ttk.Button(root, text = "Task List", command=lambda: task_list_screen(root))
     task_list_btn.pack()
     user_input = Entry(root, width= 40)
@@ -61,15 +53,36 @@ root.geometry("800x500")
 
 # Creates a fgrame widget
 frm = ttk.Frame(root, padding=10)
+frm.pack()
 
 # Grid is to specify layout
-frm.grid()
+
+### TODO: Move everything to a class
 
 # Home screen - current option is clicking on the task list
-ttk.Button(frm, text = "Task List", command=lambda: task_list_screen(root)).grid(column=0, row=0)
+task_list_frame  = ttk.Frame(master=frm)
+task_list_frame.grid(column= 0, row= 0)
+# ttk.Button(frm, text = "Task List", command=lambda: task_list_screen(root)).grid(column=0, row=0)
 
 # Button Widget to the right of label (col, row)
-ttk.Button(frm, text="Close App", command=root.destroy).grid(column=0, row=1)
+quit_frame = ttk.Frame(master=frm)
+quit_frame.grid(column=0, row=0)
+# ttk.Button(frm, text="Close App", command=root.destroy).grid(column=0, row=1)
+
+# task_list
+
+# Remove Later
+ttk.Label(master=task_list_frame,
+         text='Conj').grid()
+ttk.Label(master=quit_frame,
+         text='Trans').grid()
+
+# Remove Later POC for changing frames
+ttk.Button(text="Raise Conjugator", command=task_list_frame.tkraise).pack()
+ttk.Button(text="Raise Translator", command=quit_frame.tkraise).pack()
+task_list_frame.tkraise()
+# Keep
+# ttk.Button(text="Task List", command=).pack()
 
 # Method to put everything on display and responds to user input
 root.mainloop()
