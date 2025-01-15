@@ -1,3 +1,11 @@
+Day 4: 1/15/2025
+What did I do?
+Extremely simple changes on changing pages. 
+A stack overflow page helped out in this 
+
+Thoughts?
+Not bad
+----------------------------------------------------------------------------------
 Day 3: 1/14/25
 What did I do?
 I played around with frames in tkinter
