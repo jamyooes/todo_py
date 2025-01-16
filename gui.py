@@ -55,7 +55,7 @@ class App(Tk):
         # Stores the frames
         self.frames = {}
         # Loop through all the potential pages and save them into the frames
-        for F in (StartPage, PageOne, PageTwo):
+        for F in (StartPage, PageOne, PageTwo, TaskList):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -80,8 +80,11 @@ class StartPage(Frame):
                             command=lambda: controller.show_frame("PageOne"))
         button2 = Button(self, text="Go to Page Two",
                             command=lambda: controller.show_frame("PageTwo"))
+        task_list_nav = Button(self, text="Go to Task List",
+                            command=lambda: controller.show_frame("TaskList"))
         button1.pack()
         button2.pack()
+        task_list_nav.pack()
 
 
 class PageOne(Frame):
@@ -105,6 +108,93 @@ class PageTwo(Frame):
                            command=lambda: controller.show_frame("StartPage"))
         button.pack()
 
+class TaskList(Frame):
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+        
+        self.controller = controller
+        
+        # Title of the page
+        label = Label(self, text = "Task list")
+        label.pack (side="top", fill = "x", pady = 10)
+        
+        # Store the tasks
+        self.tasks = []
+        text_name = ""
+        text_description = ""
+        def display_text():
+            text_name = task_name.get()
+            text_description = task_description.get()
+            if text_name != "" and text_description != "":
+                empty_warning.config(text="")
+                self.add_tasks(text_name, text_description, len(self.tasks) + 1)
+                self.display_tasks()
+                text_name = ""
+                text_description = ""
+            else:
+                empty_warning.config(text="Enter an actual task")
+            
+        def delete_text_tasks():
+            delete_id = delete_text.get()
+            try:
+                for pos in range(len(self.tasks)):
+                    # print(pos)
+                    if self.tasks[pos].get_id() == int(delete_id):
+                        # print(self.tasks[pos].get_id())
+                        self.delete_tasks(pos)
+            except:
+                pass
+            
+        # Textbox for user to enter the name and description for their task
+        task_name = Entry(self)
+        task_name.pack()
+        task_description = Entry(self)
+        task_description.pack()
+
+        submit_name_btn = Button(self, text="Display", command=display_text)
+        submit_name_btn.pack()
+        
+        delete_text = Entry(self)
+        delete_text.pack()
+        
+        delete_label = Label(self, text="Enter Task number above to delete")
+        delete_label.pack()
+        
+        delete_text_button = Button(self, text="Delete", command=delete_text_tasks)
+        delete_text_button.pack()
+
+        empty_warning = Label(self, text="")
+        empty_warning.pack()
+        
+        self.task_label = Label(self, text ="")
+        self.task_label.pack()
+        
+    def add_tasks(self, task_name, description, id):
+        self.tasks.append(Tasks(task_name, description, id))
+    
+    def delete_tasks(self, loc):
+        self.tasks.pop(loc)
+        # print(loc)
+        self.display_tasks()
+    
+    def display_tasks(self):
+        text = ""
+        for i in self.tasks:
+            text += f"Task Number {i.get_id()} - {i.get_task_name()} : {i.get_description()}\n"
+        self.task_label.config(text=text)
+
+
+class Tasks():
+    def __init__(self, task_name, description, id):
+        self.task_name = task_name
+        self.description = description
+        self.id = id
+    def get_task_name(self):
+        return self.task_name
+    def get_description(self):
+        return self.description
+    def get_id(self):
+        return self.id
 
 if __name__ == "__main__":
     root = Tk()

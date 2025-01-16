@@ -1,3 +1,11 @@
+Day 5: 1/16/2025
+What did I do?
+Simple set up for adding and remove tasks
+
+Thoughts?
+Annoyed because i dont think i can go solve this too easily the ui elements dont seem too smooth
+For now I am going to stop here for this project until I can think of a better implementation
+----------------------------------------------------------------------------------
 Day 4: 1/15/2025
 What did I do?
 Extremely simple changes on changing pages. 
